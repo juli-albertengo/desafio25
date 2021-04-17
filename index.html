@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Desafío Clase 24</title>
+    <style></style>
+</head>
+<body>
+    <main class='container'>
+        <h1>Desafío Clase 24 - Cookies</h1>
+        <div id='contenedorGeneral'>
+
+        </div>
+    </main>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+<script>
+    
+    let contenedorGeneral = document.getElementById('contenedorGeneral');
+
+    let name = Cookies.get('user')
+
+    if(!name){
+        contenedorGeneral.innerHTML = `
+        
+        <h2 class='mt-4'>Formulario de Ingreso</h2>
+        <form id='formIngreso' action="/" method="POST">
+            <div class='form-group'>
+                <label for='nombre'>Ingrese su nombre</label>
+                <input class='form-control' type='text' name='nombre' id='nombre' required>
+            </div>
+            <button type="submit" class='btn-warning'>Enviar</button>
+        </form>
+        `
+    } else {
+        contenedorGeneral.innerHTML = `
+        
+        <h5>Bienvenide ${name}</h5>
+
+        <button class='btn-danger' id='deslogeo'>Deslogearme</button>
+        
+        `
+
+        let botonDeslogeo = document.getElementById('deslogeo');
+        botonDeslogeo.addEventListener('click', () => {
+            window.location = '/logout'
+        })
+    }
+
+
+
+</script>
+</html>
