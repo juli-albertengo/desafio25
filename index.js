@@ -29,11 +29,15 @@ app.use(session({
     saveUninitialized: false
 }))
 
+//Agrego el post
+app.post('/', (req, res) => {
+    req.session.user = req.body.nombre,
+    res.sendFile(path.join(__dirname + '/index.html'))
+})
+
 app.get('/', (req, res) => {
-    req.session.user = 'Name of user' // Supongamos que esto lo saco del form de login...
     console.log(req.sessionID)
     console.log(req.session.user);
-
     res.sendFile(path.join(__dirname + '/index.html'))
 })
 
